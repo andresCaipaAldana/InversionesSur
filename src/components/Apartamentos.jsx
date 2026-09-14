@@ -1,7 +1,7 @@
 import { apartamentos, calcularPrecio, formatearPrecio } from '../data/apartamentos'
 import './Apartamentos.css'
 
-const TELEFONO = '573001234567'
+const TELEFONO = '573017982968'
 
 function Apartamentos() {
   return (

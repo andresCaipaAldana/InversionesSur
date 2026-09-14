@@ -1,6 +1,6 @@
 import './Hero.css'
 
-const WHATSAPP = 'https://wa.me/573001234567?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20apartamentos'
+const WHATSAPP = 'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20apartamentos'
 
 function Hero() {
   return (

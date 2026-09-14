@@ -1,6 +1,6 @@
 import './Header.css'
 
-const WHATSAPP = 'https://wa.me/573001234567?text=Hola,%20estoy%20interesado%20en%20los%20apartamentos%20de%20Inversiones%20Sur'
+const WHATSAPP = 'https://wa.me/573017982968?text=Hola,%20estoy%20interesado%20en%20los%20apartamentos%20de%20Inversiones%20Sur'
 
 function Header() {
   return (
