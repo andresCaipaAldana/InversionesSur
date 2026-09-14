@@ -1,19 +1,21 @@
 import './Mapa.css'
 
-const LAT = 4.3435
-const LNG = -74.3639
+const LAT = 4.3439
+const LNG = -74.3675
+const DIRECCION = 'Cl. 21 #4-35, Fusagasugá, Cundinamarca'
 
 function Mapa() {
-  const src = `https://www.google.com/maps?q=${LAT},${LNG}&z=15&output=embed`
+  const src = `https://www.google.com/maps?q=${LAT},${LNG}&z=16&output=embed`
 
   return (
     <section className="mapa">
       <div className="container">
-        <h2>Ubicación</h2>
+        <h2>Ubicación Privilegiada</h2>
         <p className="mapa__intro">
-          Nuestros apartamentos se encuentran en Fusagasugá, Cundinamarca.
+          <strong>{DIRECCION}</strong>
           <br />
-          <small>📍 Ubicación de referencia: Parque Principal de Fusagasugá</small>
+          En una zona residencial tranquila, rodeada de colegios, universidades y
+          comercio.
         </p>
         <div className="mapa__contenedor">
           <iframe
