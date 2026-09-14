@@ -1,0 +1,90 @@
+.parqueaderos {
+  background: var(--color-blanco);
+}
+
+.parqueaderos__intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  color: #6b7280;
+}
+
+.parqueaderos__card {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: var(--radio);
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: var(--sombra);
+  border: 2px solid #bfdbfe;
+}
+
+.parqueaderos__info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.parqueaderos__icono {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.parqueaderos__titulo {
+  color: var(--color-primario);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.parqueaderos__detalles {
+  list-style: none;
+}
+
+.parqueaderos__detalles li {
+  padding: 0.3rem 0;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.parqueaderos__precio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  min-width: 220px;
+}
+
+.parqueaderos__precio-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.parqueaderos__precio-valor {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+}
+
+.parqueaderos__btn {
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .parqueaderos__card {
+    grid-template-columns: 1fr;
+    padding: 1.8rem;
+  }
+  .parqueaderos__precio {
+    align-items: flex-start;
+    text-align: left;
+    min-width: auto;
+  }
+  .parqueaderos__icono {
+    font-size: 2.5rem;
+  }
+}

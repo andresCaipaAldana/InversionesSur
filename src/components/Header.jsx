@@ -1,6 +1,8 @@
 import './Header.css'
+import { TORRE } from '../data/apartamentos'
 
-const WHATSAPP = 'https://wa.me/573017982968?text=Hola,%20estoy%20interesado%20en%20los%20apartamentos%20de%20Inversiones%20Sur'
+const WHATSAPP =
+  'https://wa.me/573017982968?text=Hola,%20estoy%20interesado%20en%20la%20Torre%20Manolo'
 
 function Header() {
   return (
@@ -8,7 +10,9 @@ function Header() {
       <div className="container header__contenido">
         <div className="header__logo">
           <span className="header__logo-icono">🏢</span>
-          <span className="header__logo-texto">Inversiones Sur</span>
+          <span className="header__logo-texto">
+            Torre {TORRE} <small>· Inversiones Sur</small>
+          </span>
         </div>
         <a
           href={WHATSAPP}

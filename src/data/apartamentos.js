@@ -1,10 +1,12 @@
 export const PRECIO_M2 = 5500000
+export const PRECIO_PARQUEADERO = 45000000
+export const TORRE = 'Manolo'
 
 export const apartamentos = [
   {
     id: 1,
-    tipo: 'Apartamento 90 m²',
-    area: 90,
+    tipo: 'Apartamento 90.0 m²',
+    area: 90.0,
     areaTerraza: 0,
     habitaciones: 3,
     banos: 2,
@@ -15,8 +17,8 @@ export const apartamentos = [
   },
   {
     id: 2,
-    tipo: 'Apartamento 65 m²',
-    area: 65,
+    tipo: 'Apartamento 50.7 m²',
+    area: 50.7,
     areaTerraza: 0,
     habitaciones: 2,
     banos: 2,
@@ -27,8 +29,8 @@ export const apartamentos = [
   },
   {
     id: 3,
-    tipo: 'Apartamento 65 m² con Terraza',
-    area: 65,
+    tipo: 'Apartamento 50.7 m² con Terraza',
+    area: 50.7,
     areaTerraza: 15,
     habitaciones: 2,
     banos: 2,
@@ -39,8 +41,8 @@ export const apartamentos = [
   },
   {
     id: 4,
-    tipo: 'Apartamento 40 m²',
-    area: 40,
+    tipo: 'Apartamento 39.8 m²',
+    area: 39.8,
     areaTerraza: 0,
     habitaciones: 1,
     banos: 1,
@@ -51,8 +53,8 @@ export const apartamentos = [
   },
   {
     id: 5,
-    tipo: 'Apartamento 40 m² con Terraza 15 m²',
-    area: 40,
+    tipo: 'Apartamento 39.8 m² con Terraza 15 m²',
+    area: 39.8,
     areaTerraza: 15,
     habitaciones: 1,
     banos: 1,
@@ -63,8 +65,8 @@ export const apartamentos = [
   },
   {
     id: 6,
-    tipo: 'Apartamento 40 m² con Terraza 20 m²',
-    area: 40,
+    tipo: 'Apartamento 39.8 m² con Terraza 20 m²',
+    area: 39.8,
     areaTerraza: 20,
     habitaciones: 1,
     banos: 1,
@@ -88,5 +90,5 @@ export const calcularPrecio = (area, areaTerraza = 0) => {
 }
 
 export const calcularAreaTotal = (area, areaTerraza = 0) => {
-  return area + areaTerraza
+  return parseFloat((area + areaTerraza).toFixed(1))
 }

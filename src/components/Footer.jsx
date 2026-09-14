@@ -1,6 +1,8 @@
 import './Footer.css'
+import { TORRE, PRECIO_M2, PRECIO_PARQUEADERO, formatearPrecio } from '../data/apartamentos'
 
-const WHATSAPP = 'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20apartamentos'
+const WHATSAPP =
+  'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20la%20Torre%20Manolo'
 
 function Footer() {
   const anio = new Date().getFullYear()
@@ -9,8 +11,9 @@ function Footer() {
     <footer className="footer">
       <div className="container footer__contenido">
         <div className="footer__columna">
-          <h3>🏢 Inversiones Sur</h3>
+          <h3>🏢 Torre {TORRE}</h3>
           <p>Apartamentos en venta en Fusagasugá, Cundinamarca.</p>
+          <p className="footer__direccion">Cl. 21 #4-35</p>
         </div>
 
         <div className="footer__columna">
@@ -22,8 +25,9 @@ function Footer() {
 
         <div className="footer__columna">
           <h4>Información</h4>
-          <p>Precio: $5.500.000 / m²</p>
-          <p>8 pisos · 15 apartamentos</p>
+          <p>Precio: {formatearPrecio(PRECIO_M2)} / m²</p>
+          <p>Parqueadero: {formatearPrecio(PRECIO_PARQUEADERO)}</p>
+          <p>8 pisos · 15 apartamentos · 15 parqueaderos</p>
         </div>
       </div>
 
