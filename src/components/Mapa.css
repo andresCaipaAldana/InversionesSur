@@ -1,0 +1,19 @@
+.mapa {
+  background: var(--color-blanco);
+}
+
+.mapa__intro {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.mapa__intro small {
+  color: #9ca3af;
+}
+
+.mapa__contenedor {
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}

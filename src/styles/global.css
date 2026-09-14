@@ -1,0 +1,55 @@
+:root {
+  --color-primario: #1e3a8a;
+  --color-secundario: #f59e0b;
+  --color-whatsapp: #25d366;
+  --color-texto: #1f2937;
+  --color-fondo: #f9fafb;
+  --color-blanco: #ffffff;
+  --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radio: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-primario);
+}

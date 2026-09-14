@@ -1,0 +1,37 @@
+.footer {
+  background: var(--color-primario);
+  color: white;
+  padding: 3rem 0 1rem;
+}
+
+.footer__contenido {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer__columna h3,
+.footer__columna h4 {
+  margin-bottom: 0.8rem;
+}
+
+.footer__columna p,
+.footer__columna a {
+  color: #cbd5e1;
+  display: block;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+
+.footer__columna a:hover {
+  color: var(--color-whatsapp);
+}
+
+.footer__copy {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
