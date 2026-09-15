@@ -14,12 +14,13 @@ function Mapa() {
         <p className="mapa__intro">
           <strong>{DIRECCION}</strong>
           <br />
-          En una zona residencial tranquila, rodeada de colegios, universidades y
-          comercio.
+          Cerca a las principales vías de acceso: Calle 22, Transversal 12 y
+          Carrera 3. Rodeado de importantes sitios de educación, salud,
+          entretenimiento y comercio.
         </p>
         <div className="mapa__contenedor">
           <iframe
-            title="Ubicación Inversiones Sur"
+            title="Ubicación Torre Manolo"
             src={src}
             width="100%"
             height="450"

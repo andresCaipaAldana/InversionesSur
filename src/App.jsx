@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Apartamentos from './components/Apartamentos'
+import ZonasComunes from './components/ZonasComunes'
 import Parqueaderos from './components/Parqueaderos'
 import Entorno from './components/Entorno'
 import Mapa from './components/Mapa'
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <Hero />
       <Apartamentos />
+      <ZonasComunes />
       <Parqueaderos />
       <Entorno />
       <Mapa />

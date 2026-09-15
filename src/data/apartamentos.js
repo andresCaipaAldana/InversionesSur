@@ -5,76 +5,64 @@ export const TORRE = 'Manolo'
 export const apartamentos = [
   {
     id: 1,
-    tipo: 'Apartamento 90.0 m²',
-    area: 90.0,
-    areaTerraza: 0,
+    tipo: 'Apartamento Tipo E',
+    areaPrivada: 81.0,
+    areaConstruida: 90.0,
     habitaciones: 3,
     banos: 2,
     disponibles: 5,
     descripcion:
-      'Amplio apartamento con 3 habitaciones, 2 baños, sala-comedor, cocina integral y balcón.',
-    etiqueta: null,
+      '3 habitaciones con baño privado, 2 baños auxiliares, balcón, cocina abierta, sala-comedor y zona de ropas.',
+    etiqueta: 'Más amplio',
   },
   {
     id: 2,
-    tipo: 'Apartamento 50.7 m²',
-    area: 50.7,
-    areaTerraza: 0,
+    tipo: 'Apartamento Tipo B',
+    areaPrivada: 44.8,
+    areaConstruida: 50.7,
     habitaciones: 2,
     banos: 2,
-    disponibles: 4,
+    disponibles: 5,
     descripcion:
-      'Acogedor apartamento con 2 habitaciones, 2 baños, sala-comedor y cocina.',
+      '2 habitaciones, 2 baños, sala-comedor, cocina y balcón. Ideal para parejas o familias pequeñas.',
     etiqueta: null,
   },
   {
     id: 3,
-    tipo: 'Apartamento 50.7 m² con Terraza',
-    area: 50.7,
-    areaTerraza: 15,
-    habitaciones: 2,
-    banos: 2,
-    disponibles: 1,
-    descripcion:
-      'Apartamento de 2 habitaciones con terraza privada de 15 m². ¡Único en el proyecto!',
-    etiqueta: '¡Único con terraza!',
-  },
-  {
-    id: 4,
-    tipo: 'Apartamento 39.8 m²',
-    area: 39.8,
-    areaTerraza: 0,
+    tipo: 'Apartaestudio',
+    areaPrivada: 35.0,
+    areaConstruida: 39.8,
     habitaciones: 1,
     banos: 1,
-    disponibles: 3,
+    disponibles: 4,
     descripcion:
-      'Apartaestudio ideal para invertir o para primer hogar, con 1 habitación y 1 baño.',
+      'Apartaestudio con habitación principal, baño privado, cocina, zona de ropas, sala-comedor y balcón.',
     etiqueta: null,
   },
   {
-    id: 5,
-    tipo: 'Apartamento 39.8 m² con Terraza 15 m²',
-    area: 39.8,
-    areaTerraza: 15,
+    id: 4,
+    tipo: 'Apartaestudio con Terraza',
+    areaPrivada: 35.1,
+    areaConstruida: 53.0,
     habitaciones: 1,
     banos: 1,
     disponibles: 1,
     descripcion:
-      'Apartaestudio con terraza privada de 15 m². Perfecto para disfrutar al aire libre.',
-    etiqueta: '¡Con terraza!',
+      'Apartaestudio con habitación principal, baño privado, cocina, zona de ropas y terraza privada. ¡Único en el proyecto!',
+    etiqueta: '¡Único con terraza!',
   },
-  {
-    id: 6,
-    tipo: 'Apartamento 39.8 m² con Terraza 20 m²',
-    area: 39.8,
-    areaTerraza: 20,
-    habitaciones: 1,
-    banos: 1,
-    disponibles: 1,
-    descripcion:
-      'Apartaestudio con la terraza más amplia del proyecto: 20 m² privados.',
-    etiqueta: '¡Terraza más grande!',
-  },
+]
+
+export const zonasComunes = [
+  { icono: '🔥', nombre: 'Zona BBQ' },
+  { icono: '💪', nombre: 'Gimnasio' },
+  { icono: '🧒', nombre: 'Parque infantil' },
+  { icono: '🌳', nombre: 'Zona verde' },
+  { icono: '🪵', nombre: 'Olla de fuego' },
+  { icono: '🛎️', nombre: 'Lobby tipo hotel' },
+  { icono: '🛗', nombre: 'Ascensor con rompe eléctrica' },
+  { icono: '🅿️', nombre: 'Parqueadero con ascensor vehicular' },
+  { icono: '♿', nombre: 'Parqueaderos para discapacitados' },
 ]
 
 export const formatearPrecio = (valor) => {
@@ -85,10 +73,6 @@ export const formatearPrecio = (valor) => {
   }).format(valor)
 }
 
-export const calcularPrecio = (area, areaTerraza = 0) => {
-  return (area + areaTerraza) * PRECIO_M2
-}
-
-export const calcularAreaTotal = (area, areaTerraza = 0) => {
-  return parseFloat((area + areaTerraza).toFixed(1))
+export const calcularPrecio = (areaConstruida) => {
+  return areaConstruida * PRECIO_M2
 }
