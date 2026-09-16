@@ -1,0 +1,17 @@
+.home__grid-section {
+  padding: 3rem 0 5rem;
+  background: var(--color-fondo);
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.home__vacio {
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-style: italic;
+  padding: 3rem 0;
+}

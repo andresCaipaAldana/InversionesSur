@@ -1,0 +1,28 @@
+.mapa {
+  background: var(--color-blanco);
+}
+
+.mapa__intro {
+  text-align: center;
+  color: var(--color-texto-suave);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.05rem;
+}
+
+.mapa__intro strong {
+  color: var(--color-primario);
+  font-weight: 600;
+  font-family: var(--fuente-titulos);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.mapa__contenedor {
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+}

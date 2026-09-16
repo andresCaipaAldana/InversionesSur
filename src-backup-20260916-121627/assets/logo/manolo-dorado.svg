@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 243 224">
+  <defs>
+    <linearGradient id="degradadoManoloDorado" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0DC9A"/>
+      <stop offset="50%" stop-color="#C9A961"/>
+      <stop offset="100%" stop-color="#9C7F3E"/>
+    </linearGradient>
+    <mask id="agujerosDorado">
+      <rect width="243" height="224" fill="white"/>
+      <path fill="black" d="M34 68 L34 140 L68 104 Z"/>
+      <path fill="black" d="M88.5 104 L121.5 72 L154.5 104 L121.5 136 Z"/>
+      <path fill="black" d="M209 68 L174.5 104 L209 140 Z"/>
+    </mask>
+  </defs>
+  <path fill="url(#degradadoManoloDorado)" mask="url(#agujerosDorado)" d="M20 28 L20 178 L78 115 L121.5 160 L165 115 L223 178 L223 28 L165 93 L121.5 48 L78 93 Z"/>
+</svg>

@@ -1,0 +1,57 @@
+.footer {
+  background: var(--color-primario);
+  color: white;
+  padding: 3.5rem 0 1rem;
+}
+
+.footer__contenido {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer__columna h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+  color: var(--color-blanco);
+}
+
+.footer__columna h4 {
+  font-family: var(--fuente-titulos);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  color: var(--color-secundario);
+  font-weight: 600;
+}
+
+.footer__columna p,
+.footer__columna a {
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.footer__columna a:hover {
+  color: var(--color-whatsapp);
+}
+
+.footer__direccion {
+  color: var(--color-secundario) !important;
+  font-weight: 500 !important;
+}
+
+.footer__copy {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+}

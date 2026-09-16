@@ -1,24 +1,15 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Apartamentos from './components/Apartamentos'
-import ZonasComunes from './components/ZonasComunes'
-import Parqueaderos from './components/Parqueaderos'
-import Entorno from './components/Entorno'
-import Mapa from './components/Mapa'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import PropiedadDetalle from './pages/PropiedadDetalle'
 
 function App() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <Apartamentos />
-      <ZonasComunes />
-      <Parqueaderos />
-      <Entorno />
-      <Mapa />
-      <Footer />
-    </>
+    <BrowserRouter basename="/InversionesSur">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/propiedad/:id" element={<PropiedadDetalle />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

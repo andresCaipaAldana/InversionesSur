@@ -1,0 +1,38 @@
+.filtros {
+  padding: 4rem 0 2rem;
+  background: var(--color-fondo);
+}
+
+.filtros__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.filtros__boton {
+  padding: 0.6rem 1.4rem;
+  background: transparent;
+  border: 1.5px solid var(--color-primario);
+  color: var(--color-primario);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+}
+
+.filtros__boton:hover {
+  background: var(--color-primario);
+  color: white;
+}
+
+.filtros__boton--activo {
+  background: var(--color-primario);
+  color: var(--color-secundario);
+  border-color: var(--color-primario);
+}
