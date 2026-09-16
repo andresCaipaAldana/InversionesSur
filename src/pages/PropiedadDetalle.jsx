@@ -31,7 +31,6 @@ function PropiedadDetalle() {
     )
   }
 
-  // Renderiza secciones según el tipo de propiedad
   const renderSecciones = () => {
     switch (propiedad.tipo) {
       case 'proyecto':
@@ -43,10 +42,8 @@ function PropiedadDetalle() {
           </>
         )
       case 'finca':
-        // Aquí irían secciones específicas de finca
         return null
       case 'lote':
-        // Aquí irían secciones específicas de lote
         return null
       default:
         return null
@@ -56,6 +53,11 @@ function PropiedadDetalle() {
   return (
     <>
       <Header />
+      <div className="container" style={{ paddingTop: '1.5rem' }}>
+        <Link to="/" className="propiedad-detalle__volver">
+          ← Volver a propiedades
+        </Link>
+      </div>
       <HeroDetalle propiedad={propiedad} />
       {renderSecciones()}
       <Entorno />

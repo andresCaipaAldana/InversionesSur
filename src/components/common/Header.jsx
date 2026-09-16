@@ -1,20 +1,17 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 import WhatsAppIcon from './WhatsAppIcon'
 
-const LINK_INVERSIONES = '#' // TODO: reemplazar por URL real de Inversiones Sur
-const WHATSAPP = 'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20la%20Torre%20Manolo'
+const WHATSAPP =
+  'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20las%20propiedades'
 
 function Header() {
   return (
     <header className="header">
       <div className="container header__contenido">
-        <a
-          href={LINK_INVERSIONES}
-          className="header__link"
-          aria-label="Inversiones Sur"
-        >
+        <Link to="/" className="header__link" aria-label="Inversiones Sur - Inicio">
           <span className="header__logo-texto">Inversiones Sur</span>
-        </a>
+        </Link>
 
         <a
           href={WHATSAPP}

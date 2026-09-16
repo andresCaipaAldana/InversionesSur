@@ -3,7 +3,8 @@ import { apartamentos, zonasComunes, PRECIO_M2, PRECIO_PARQUEADERO, TORRE } from
 export const propiedades = [
   {
     id: 'torre-manolo',
-    tipo: 'proyecto', // 'proyecto' | 'finca' | 'lote' | 'casa' | 'apartamento'
+    tipo: 'proyecto',
+    tiposSecundarios: ['apartamento'], // Aparece también al filtrar por Apartamentos
     nombre: `Torre ${TORRE}`,
     subtitulo: 'Un espacio perfecto para invertir en tu bienestar',
     descripcion:
@@ -17,7 +18,7 @@ export const propiedades = [
     precioBase: PRECIO_M2,
     precioTexto: 'Desde $5.500.000 / m²',
     moneda: 'COP',
-    imagenPrincipal: null, // Cuando haya imagen real, poner la ruta
+    imagenPrincipal: null,
     galeria: [],
     caracteristicas: [
       'Zonas comunes',
@@ -37,42 +38,6 @@ export const propiedades = [
     estado: 'disponible',
     destacada: true,
   },
-
-  // 🔽 Plantillas para futuras propiedades (descomentar y llenar cuando tengas la info)
-
-  // {
-  //   id: 'finca-la-esperanza',
-  //   tipo: 'finca',
-  //   nombre: 'Finca La Esperanza',
-  //   subtitulo: '...',
-  //   descripcion: '...',
-  //   ubicacion: { direccion: '...', ciudad: '...', lat: 0, lng: 0 },
-  //   precioBase: 0,
-  //   precioTexto: '...',
-  //   moneda: 'COP',
-  //   imagenPrincipal: null,
-  //   galeria: [],
-  //   caracteristicas: [],
-  //   estado: 'disponible',
-  //   destacada: false,
-  // },
-
-  // {
-  //   id: 'lote-campestre-1',
-  //   tipo: 'lote',
-  //   nombre: 'Lote Campestre',
-  //   subtitulo: '...',
-  //   descripcion: '...',
-  //   ubicacion: { direccion: '...', ciudad: '...', lat: 0, lng: 0 },
-  //   precioBase: 0,
-  //   precioTexto: '...',
-  //   moneda: 'COP',
-  //   imagenPrincipal: null,
-  //   galeria: [],
-  //   caracteristicas: [],
-  //   estado: 'disponible',
-  //   destacada: false,
-  // },
 ]
 
 export const getPropiedadPorId = (id) => {
@@ -84,8 +49,11 @@ export const getPropiedadesDestacadas = () => {
 }
 
 export const getPropiedadesPorTipo = (tipo) => {
-  if (tipo === 'todas') return propiedades.filter((p) => p.estado !== 'vendido')
-  return propiedades.filter((p) => p.tipo === tipo && p.estado !== 'vendido')
+  const activas = propiedades.filter((p) => p.estado !== 'vendido')
+  if (tipo === 'todas') return activas
+  return activas.filter(
+    (p) => p.tipo === tipo || (p.tiposSecundarios && p.tiposSecundarios.includes(tipo))
+  )
 }
 
 export const formatearPrecio = (valor) => {

@@ -1,3 +1,21 @@
 .propiedad-detalle {
   min-height: 100vh;
 }
+
+.propiedad-detalle__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-secundario);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 0.2s, color 0.2s;
+  padding: 0.5rem 0;
+}
+
+.propiedad-detalle__volver:hover {
+  color: var(--color-primario);
+  transform: translateX(-3px);
+}
