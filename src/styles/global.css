@@ -1,21 +1,40 @@
 :root {
-  /* Paleta del brochure */
-  --color-primario: #1B2A4E;       /* Azul marino oscuro */
-  --color-secundario: #C9A961;     /* Dorado / Mostaza */
-  --color-acento: #8B3A2F;         /* Terracota */
-  --color-crema: #F5F0E8;          /* Crema */
+  /* ============================================
+     PALETA MODERNA - Inspirada en Marval
+     ============================================ */
+  --color-primario: #1A2B5C;        /* Azul marino moderno */
+  --color-primario-claro: #2A4180;   /* Variante clara para hover */
+  --color-primario-oscuro: #0F1729;  /* Variante oscura para gradientes */
+  --color-secundario: #C9A961;       /* Dorado / Mostaza */
+  --color-secundario-claro: #E5C87A; /* Dorado claro */
+  --color-acento: #E85D4A;           /* Rojo coral (para badges) */
+  --color-crema: #F8F5EF;            /* Crema suave */
   --color-whatsapp: #25D366;
   --color-texto: #1A1A1A;
-  --color-texto-suave: #4B5563;
-  --color-fondo: #FAF7F2;
-  --color-blanco: #ffffff;
-  --sombra: 0 4px 6px -1px rgba(27, 42, 78, 0.1);
-  --sombra-fuerte: 0 12px 24px rgba(27, 42, 78, 0.15);
-  --radio: 8px;
+  --color-texto-suave: #6B7280;
+  --color-fondo: #FFFFFF;            /* Fondo blanco (estilo Marval) */
+  --color-fondo-alt: #F9FAFB;        /* Fondo alterno gris muy claro */
+  --color-borde: #E5E7EB;
+  --color-blanco: #FFFFFF;
 
-  /* Tipografías */
-  --fuente-titulos: 'Cinzel', serif;
-  --fuente-cuerpo: 'Montserrat', sans-serif;
+  /* Sombras modernas */
+  --sombra-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 20px 40px rgba(0, 0, 0, 0.12);
+
+  /* Bordes redondeados modernos */
+  --radio-sm: 8px;
+  --radio: 16px;
+  --radio-lg: 24px;
+  --radio-full: 999px;
+
+  /* Tipografía - Poppins */
+  --fuente-titulos: 'Poppins', sans-serif;
+  --fuente-cuerpo: 'Poppins', sans-serif;
+
+  /* Transiciones */
+  --transicion: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -24,12 +43,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--fuente-cuerpo);
   color: var(--color-texto);
   background-color: var(--color-fondo);
   line-height: 1.6;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -43,6 +68,11 @@ button {
   font-family: inherit;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -53,157 +83,142 @@ section {
   padding: 5rem 0;
 }
 
-h1, h2, h3 {
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+
+h1, h2, h3, h4 {
   line-height: 1.2;
   font-family: var(--fuente-titulos);
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
   text-align: center;
-  color: var(--color-primario);
-  font-weight: 600;
+  letter-spacing: -0.02em;
+  position: relative;
 }
 
 h2::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--color-secundario);
-  margin: 1rem auto 0;
+  width: 50px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secundario), var(--color-secundario-claro));
+  margin: 1.2rem auto 0;
+  border-radius: var(--radio-full);
 }
 
-/* Botón WhatsApp estilo premium (dorado) */
-.btn--whatsapp {
-  background: var(--color-secundario);
-  color: var(--color-primario);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 2px solid var(--color-secundario);
-  font-weight: 700;
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  letter-spacing: -0.01em;
 }
 
-.btn--whatsapp:hover {
-  background: transparent;
-  color: var(--color-secundario);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(201, 169, 97, 0.4);
-}
+/* ============================================
+   BOTONES
+   ============================================ */
 
-/* Header: botón de contacto también en dorado */
-.header__whatsapp {
-  background: transparent;
-  color: var(--color-secundario);
-  border: 2px solid var(--color-secundario);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radio);
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: var(--radio-full);
+  font-size: 0.95rem;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.header__whatsapp:hover {
-  background: var(--color-secundario);
-  color: var(--color-primario);
-  transform: translateY(-2px);
-}
-
-/* Tarjetas de apartamentos: botón de consulta */
-.card__btn {
-  background: var(--color-secundario);
-  color: var(--color-primario);
-  border: 2px solid var(--color-secundario);
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-}
-
-.card__btn:hover {
-  background: transparent;
-  color: var(--color-secundario);
-}
-
-/* Parqueaderos: botón de reserva */
-.parqueaderos__btn {
-  background: var(--color-primario);
-  color: var(--color-secundario);
-  border: 2px solid var(--color-primario);
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.parqueaderos__btn:hover {
-  background: var(--color-secundario);
-  color: var(--color-primario);
-}
-
-/* Botón WhatsApp estilo premium (dorado) */
-.btn--whatsapp {
-  background: var(--color-secundario);
-  color: var(--color-primario);
+  transition: all var(--transicion);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border: 2px solid var(--color-secundario);
-  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border-color: var(--color-primario);
+}
+
+.btn--primary:hover {
+  background: var(--color-primario-claro);
+  border-color: var(--color-primario-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(26, 43, 92, 0.3);
+}
+
+.btn--whatsapp {
+  background: var(--color-secundario);
+  color: var(--color-primario);
+  border-color: var(--color-secundario);
 }
 
 .btn--whatsapp:hover {
-  background: transparent;
-  color: var(--color-secundario);
+  background: var(--color-secundario-claro);
+  border-color: var(--color-secundario-claro);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(201, 169, 97, 0.4);
+  box-shadow: 0 10px 25px rgba(201, 169, 97, 0.4);
 }
 
-.card__btn {
-  background: var(--color-secundario);
-  color: var(--color-primario);
-  border: 2px solid var(--color-secundario);
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-}
-
-.card__btn:hover {
+.btn--outline {
   background: transparent;
-  color: var(--color-secundario);
+  color: var(--color-blanco);
+  border-color: var(--color-blanco);
 }
 
-.parqueaderos__btn {
-  background: var(--color-primario);
-  color: var(--color-secundario);
-  border: 2px solid var(--color-primario);
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.parqueaderos__btn:hover {
-  background: var(--color-secundario);
+.btn--outline:hover {
+  background: var(--color-blanco);
   color: var(--color-primario);
 }
 
-/* Footer WhatsApp link */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-primario);
+  border-color: var(--color-borde);
+}
+
+.btn--ghost:hover {
+  background: var(--color-fondo-alt);
+  border-color: var(--color-primario);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer__whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--color-secundario) !important;
-  transition: color 0.2s;
+  transition: color var(--transicion);
+  font-weight: 500;
 }
 
 .footer__whatsapp:hover {
-  color: var(--color-blanco) !important;
+  color: var(--color-secundario-claro) !important;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.text-center { text-align: center; }
+.text-suave { color: var(--color-texto-suave); }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+
+@media (max-width: 640px) {
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1rem; }
 }

@@ -1,48 +1,121 @@
 import './HeroDetalle.css'
-import logoDorado from '../../assets/logo/manolo-dorado.svg'
 import WhatsAppIcon from '../common/WhatsAppIcon'
+import { getMediaUrl } from '../../data/propiedades'
 
-const WHATSAPP =
-  'https://wa.me/573017982968?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20la%20Torre%20Manolo'
+const TELEFONO = '573017982968'
 
-function Hero() {
+function HeroDetalle({ propiedad }) {
+  if (!propiedad) return null
+
+  const mensaje = encodeURIComponent(
+    `Hola, quiero información sobre ${propiedad.nombre}.`
+  )
+  const linkWhatsApp = `https://wa.me/${TELEFONO}?text=${mensaje}`
+
+  const tipoLabel = {
+    proyecto: 'Proyecto',
+    finca: 'Finca',
+    lote: 'Lote',
+    casa: 'Casa',
+    apartamento: 'Apartamento',
+  }
+
+  // Imagen de fondo: portada o primera foto
+  let imagenFondo = null
+  if (propiedad.imagenPrincipal) {
+    imagenFondo = propiedad.imagenPrincipal
+  } else if (propiedad.media?.fotos && propiedad.media.fotos.length > 0) {
+    imagenFondo = getMediaUrl(propiedad.media.fotos[0])
+  }
+
+  const precioMostrar = propiedad.precioTexto || 'Consultar precio'
+
+  // Datos destacados (extraídos de características)
+  const datosDestacados = extraerDatosDestacados(propiedad)
+
   return (
-    <section className="hero">
-      <div className="container hero__contenido">
-        <div className="hero__logo">
-          <img src={logoDorado} alt="Manolo" className="hero__logo-img" />
-          <h1 className="hero__nombre">MANOLO</h1>
-        </div>
+    <section
+      className={`hero-detalle ${imagenFondo ? 'hero-detalle--con-imagen' : ''}`}
+      style={imagenFondo ? { backgroundImage: `url(${imagenFondo})` } : {}}
+    >
+      <div className="hero-detalle__overlay"></div>
+      <div className="container hero-detalle__contenido">
+        <span className="hero-detalle__badge">
+          {tipoLabel[propiedad.tipo] || propiedad.tipo}
+        </span>
+        <h1 className="hero-detalle__nombre">{propiedad.nombre}</h1>
+        {propiedad.ubicacion?.ciudad && (
+          <p className="hero-detalle__ubicacion">
+            📍 {propiedad.ubicacion.ciudad}
+          </p>
+        )}
+        {propiedad.subtitulo && (
+          <p className="hero-detalle__subtitulo">{propiedad.subtitulo}</p>
+        )}
+        <p className="hero-detalle__precio">{precioMostrar}</p>
 
-        <p className="hero__subtitulo">
-          Un espacio perfecto para <strong>invertir en tu bienestar</strong> y
-          calidad de vida.
-        </p>
+        {datosDestacados.length > 0 && (
+          <div className="hero-detalle__datos-rapidos">
+            {datosDestacados.map((dato, idx) => (
+              <div key={idx} className="hero-detalle__dato-rapido">
+                <span className="hero-detalle__dato-icono">{dato.icono}</span>
+                <span className="hero-detalle__dato-label">{dato.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
-        <p className="hero__descripcion">
-          Tu nuevo hogar en <strong>Fusagasugá</strong>: apartamentos modernos de
-          39.8 m², 50.7 m² y 90.0 m² en el corazón de Cundinamarca.
-          <br />
-          Precio desde <strong>$5.500.000 / m²</strong>
-        </p>
-
-        <div className="hero__botones">
+        <div className="hero-detalle__botones">
           <a
-            href={WHATSAPP}
+            href={linkWhatsApp}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--whatsapp"
           >
             <WhatsAppIcon size={20} />
-            <span>Contacto por WhatsApp</span>
+            <span>Consultar por WhatsApp</span>
           </a>
-          <a href="#apartamentos" className="btn btn--outline">
-            Ver apartamentos
-          </a>
+          {propiedad.media?.videos?.length > 0 && (
+            <a href="#video" className="btn btn--outline">
+              ▶ Ver video
+            </a>
+          )}
         </div>
       </div>
     </section>
   )
 }
 
-export default Hero
+// Extrae hasta 4 datos destacados de las características
+function extraerDatosDestacados(propiedad) {
+  const datos = []
+  const caracteristicas = propiedad.caracteristicas || []
+
+  // Buscar área
+  const areaMatch = caracteristicas.find((c) => /m²/.test(c))
+  if (areaMatch) {
+    datos.push({ icono: '📐', label: areaMatch.replace(' construidos', '') })
+  }
+
+  // Buscar habitaciones
+  const habMatch = caracteristicas.find((c) => /habitacion/i.test(c))
+  if (habMatch) {
+    datos.push({ icono: '🛏', label: habMatch })
+  }
+
+  // Buscar baños
+  const banosMatch = caracteristicas.find((c) => /ba[ñn]o/i.test(c))
+  if (banosMatch) {
+    datos.push({ icono: '🛁', label: banosMatch })
+  }
+
+  // Buscar conjunto cerrado
+  const conjuntoMatch = caracteristicas.find((c) => /conjunto/i.test(c))
+  if (conjuntoMatch && datos.length < 4) {
+    datos.push({ icono: '🏘️', label: 'Conjunto cerrado' })
+  }
+
+  return datos.slice(0, 4)
+}
+
+export default HeroDetalle

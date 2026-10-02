@@ -1,26 +1,30 @@
 import './Mapa.css'
 
-const LAT = 4.3439
-const LNG = -74.3675
-const DIRECCION = 'Cl. 21 #4-35, Fusagasugá, Cundinamarca'
+function Mapa({ propiedad }) {
+  if (!propiedad?.ubicacion) return null
 
-function Mapa() {
-  const src = `https://www.google.com/maps?q=${LAT},${LNG}&z=16&output=embed`
+  const { direccion, ciudad, lat, lng } = propiedad.ubicacion
+
+  if (!lat || !lng) return null
+
+  const src = `https://www.google.com/maps?q=${lat},${lng}&z=15&output=embed`
 
   return (
     <section className="mapa">
       <div className="container">
-        <h2>Ubicación Privilegiada</h2>
+        <h2>Ubicación</h2>
         <p className="mapa__intro">
-          <strong>{DIRECCION}</strong>
-          <br />
-          Cerca a las principales vías de acceso: Calle 22, Transversal 12 y
-          Carrera 3. Rodeado de importantes sitios de educación, salud,
-          entretenimiento y comercio.
+          <strong>{direccion || ciudad}</strong>
+          {ciudad && direccion && (
+            <>
+              <br />
+              {ciudad}
+            </>
+          )}
         </p>
         <div className="mapa__contenedor">
           <iframe
-            title="Ubicación Torre Manolo"
+            title={`Ubicación de ${propiedad.nombre}`}
             src={src}
             width="100%"
             height="450"

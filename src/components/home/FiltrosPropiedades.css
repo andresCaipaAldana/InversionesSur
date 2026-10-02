@@ -1,38 +1,86 @@
 .filtros {
-  padding: 4rem 0 2rem;
-  background: var(--color-fondo);
+  padding: 3rem 0 2rem;
+  background: var(--color-blanco);
+}
+
+.filtros h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
 }
 
 .filtros__lista {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.6rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .filtros__boton {
-  padding: 0.6rem 1.4rem;
-  background: transparent;
-  border: 1.5px solid var(--color-primario);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--color-fondo-alt);
+  border: 1.5px solid transparent;
   color: var(--color-primario);
-  border-radius: 50px;
-  font-size: 0.85rem;
+  border-radius: var(--radio-full);
+  font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.2s;
+  letter-spacing: 0.02em;
+  transition: all var(--transicion);
   cursor: pointer;
   font-family: var(--fuente-cuerpo);
+  white-space: nowrap;
+}
+
+.filtros__icono {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .filtros__boton:hover {
-  background: var(--color-primario);
-  color: white;
+  background: var(--color-blanco);
+  border-color: var(--color-primario);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-sm);
 }
 
 .filtros__boton--activo {
   background: var(--color-primario);
-  color: var(--color-secundario);
+  color: var(--color-blanco);
   border-color: var(--color-primario);
+  font-weight: 600;
+}
+
+.filtros__boton--activo:hover {
+  background: var(--color-primario-claro);
+  border-color: var(--color-primario-claro);
+  color: var(--color-blanco);
+}
+
+@media (max-width: 640px) {
+  .filtros {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .filtros__lista {
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filtros__lista::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filtros__boton {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
 }

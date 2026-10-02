@@ -1,11 +1,11 @@
 .home__grid-section {
   padding: 3rem 0 5rem;
-  background: var(--color-fondo);
+  background: var(--color-blanco);
 }
 
 .home__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
 }
 
@@ -14,4 +14,15 @@
   color: var(--color-texto-suave);
   font-style: italic;
   padding: 3rem 0;
+}
+
+@media (max-width: 640px) {
+  .home__grid-section {
+    padding: 2rem 0 3.5rem;
+  }
+
+  .home__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }

@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import './FiltrosPropiedades.css'
 
 const TIPOS = [
-  { valor: 'todas', label: 'Todas' },
-  { valor: 'proyecto', label: 'Proyectos' },
-  { valor: 'finca', label: 'Fincas' },
-  { valor: 'lote', label: 'Lotes' },
-  { valor: 'casa', label: 'Casas' },
-  { valor: 'apartamento', label: 'Apartamentos' },
+  { valor: 'todas', label: 'Todas', icono: '✨' },
+  { valor: 'casa', label: 'Casas', icono: '🏡' },
+  { valor: 'apartamento', label: 'Apartamentos', icono: '🏢' },
+  { valor: 'lote', label: 'Lotes', icono: '🌳' },
+  { valor: 'proyecto', label: 'Proyectos', icono: '🏗️' },
+  { valor: 'finca', label: 'Fincas', icono: '🌾' },
 ]
 
 function FiltrosPropiedades({ filtroActivo = 'todas', onCambiarFiltro }) {
@@ -24,7 +23,8 @@ function FiltrosPropiedades({ filtroActivo = 'todas', onCambiarFiltro }) {
               }`}
               onClick={() => onCambiarFiltro && onCambiarFiltro(tipo.valor)}
             >
-              {tipo.label}
+              <span className="filtros__icono">{tipo.icono}</span>
+              <span>{tipo.label}</span>
             </button>
           ))}
         </div>

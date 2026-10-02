@@ -1,76 +1,162 @@
 .hero-general {
-  background: linear-gradient(135deg, #1B2A4E 0%, #2E4A7D 100%);
-  color: white;
-  padding: 6rem 0 5rem;
-  text-align: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-fondo-alt) 100%);
+  padding: 5rem 0 4rem;
   position: relative;
   overflow: hidden;
 }
 
-.hero-general::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(201, 169, 97, 0.12) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
 .hero-general__contenido {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
   position: relative;
   z-index: 1;
 }
 
+.hero-general__texto {
+  max-width: 700px;
+}
+
 .hero-general__badge {
   display: inline-block;
-  border: 1px solid var(--color-secundario);
-  color: var(--color-secundario);
-  padding: 0.5rem 1.5rem;
-  border-radius: 2px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  letter-spacing: 4px;
+  background: rgba(201, 169, 97, 0.15);
+  color: var(--color-primario);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radio-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: var(--fuente-titulos);
 }
 
 .hero-general__titulo {
   font-family: var(--fuente-titulos);
-  font-size: 3rem;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--color-primario);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: white;
 }
 
-.hero-general__titulo span {
+.hero-general__titulo-destacado {
   color: var(--color-secundario);
-  font-style: italic;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-general__titulo-destacado::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  right: 0;
+  height: 0.35em;
+  background: rgba(201, 169, 97, 0.2);
+  z-index: -1;
+  border-radius: var(--radio-sm);
 }
 
 .hero-general__subtitulo {
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.9;
-  font-weight: 300;
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--color-texto-suave);
+  margin-bottom: 2rem;
   line-height: 1.7;
+  font-weight: 400;
+  max-width: 550px;
 }
 
 .hero-general__botones {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
+/* ============================================
+   DECORACIÓN (círculos flotantes)
+   ============================================ */
+.hero-general__decoracion {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: block;
+}
+
+.hero-general__circulo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-general__circulo {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.3), rgba(201, 169, 97, 0.05));
+  top: 20px;
+  right: 20px;
+}
+
+.hero-general__circulo--2 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(26, 43, 92, 0.15), rgba(26, 43, 92, 0.02));
+  top: 100px;
+  right: 150px;
+  animation-delay: -2s;
+}
+
+.hero-general__circulo--3 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.4), rgba(201, 169, 97, 0.1));
+  top: 220px;
+  right: 50px;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.03); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .hero-general__contenido {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-general__decoracion {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
-  .hero-general { padding: 4rem 0 3.5rem; }
-  .hero-general__titulo { font-size: 2rem; }
-  .hero-general__subtitulo { font-size: 0.95rem; }
+  .hero-general {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-general__badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .hero-general__titulo {
+    font-size: 2rem;
+  }
+
+  .hero-general__botones {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-general__botones .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

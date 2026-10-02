@@ -55,3 +55,15 @@
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 1px;
 }
+
+.footer__link {
+  color: var(--color-secundario);
+  font-weight: 500;
+  transition: color 0.2s;
+  margin-left: 0.5rem;
+}
+
+.footer__link:hover {
+  color: var(--color-blanco);
+  text-decoration: underline;
+}

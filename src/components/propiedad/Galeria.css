@@ -1,0 +1,143 @@
+.galeria {
+  background: var(--color-blanco);
+  padding: 4rem 0;
+}
+
+.galeria h2 {
+  margin-bottom: 2rem;
+}
+
+.galeria__principal {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--color-primario-oscuro);
+  border-radius: var(--radio-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-md);
+  margin-bottom: 1rem;
+}
+
+.galeria__principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.galeria__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-primario);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transicion);
+  border: none;
+  font-family: var(--fuente-cuerpo);
+  box-shadow: var(--sombra);
+  padding-bottom: 4px;
+}
+
+.galeria__nav:hover {
+  background: var(--color-secundario);
+  color: var(--color-primario);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.galeria__nav--prev {
+  left: 1rem;
+}
+
+.galeria__nav--next {
+  right: 1rem;
+}
+
+.galeria__contador {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(15, 23, 41, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-blanco);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radio-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.galeria__miniaturas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.6rem;
+}
+
+.galeria__miniatura {
+  aspect-ratio: 1;
+  border-radius: var(--radio-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  transition: all var(--transicion);
+  opacity: 0.6;
+}
+
+.galeria__miniatura:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.galeria__miniatura--activa {
+  border-color: var(--color-secundario);
+  opacity: 1;
+}
+
+.galeria__miniatura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .galeria {
+    padding: 2.5rem 0;
+  }
+
+  .galeria__principal {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radio);
+  }
+
+  .galeria__nav {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .galeria__nav--prev { left: 0.5rem; }
+  .galeria__nav--next { right: 0.5rem; }
+
+  .galeria__contador {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .galeria__miniaturas {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.4rem;
+  }
+}

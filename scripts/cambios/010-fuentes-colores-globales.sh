@@ -1,0 +1,295 @@
+#!/bin/bash
+# ============================================================
+# Cambio 010: Rediseño global - Fuentes Poppins + Colores modernos
+# Fecha: $(date +%Y-%m-%d)
+# ============================================================
+
+set -e
+
+cd "$(dirname "$0")/../.."
+echo "🎨 Aplicando rediseño global..."
+echo ""
+
+# --- 1. Actualizar index.html con Poppins ---
+echo "1️⃣ Actualizando index.html (Google Fonts)..."
+cat > index.html << 'EOF'
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/InversionesSur/favicon.svg" />
+    <meta
+      name="description"
+      content="Construcciones Azur M&A - Proyectos, casas y lotes en Fusagasugá, Silvania y la región. Encuentra tu próximo hogar."
+    />
+    <meta property="og:title" content="Construcciones Azur M&A" />
+    <meta
+      property="og:description"
+      content="Encuentra tu próximo hogar en Fusagasugá y la región. Proyectos, casas y lotes con la mejor asesoría."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Construcciones Azur M&A | Vivienda nueva en Fusagasugá</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+EOF
+echo "   ✅ index.html con Poppins"
+
+# --- 2. Actualizar global.css ---
+echo "2️⃣ Actualizando global.css..."
+cat > src/styles/global.css << 'EOF'
+:root {
+  /* ============================================
+     PALETA MODERNA - Inspirada en Marval
+     ============================================ */
+  --color-primario: #1A2B5C;        /* Azul marino moderno */
+  --color-primario-claro: #2A4180;   /* Variante clara para hover */
+  --color-primario-oscuro: #0F1729;  /* Variante oscura para gradientes */
+  --color-secundario: #C9A961;       /* Dorado / Mostaza */
+  --color-secundario-claro: #E5C87A; /* Dorado claro */
+  --color-acento: #E85D4A;           /* Rojo coral (para badges) */
+  --color-crema: #F8F5EF;            /* Crema suave */
+  --color-whatsapp: #25D366;
+  --color-texto: #1A1A1A;
+  --color-texto-suave: #6B7280;
+  --color-fondo: #FFFFFF;            /* Fondo blanco (estilo Marval) */
+  --color-fondo-alt: #F9FAFB;        /* Fondo alterno gris muy claro */
+  --color-borde: #E5E7EB;
+  --color-blanco: #FFFFFF;
+
+  /* Sombras modernas */
+  --sombra-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 20px 40px rgba(0, 0, 0, 0.12);
+
+  /* Bordes redondeados modernos */
+  --radio-sm: 8px;
+  --radio: 16px;
+  --radio-lg: 24px;
+  --radio-full: 999px;
+
+  /* Tipografía - Poppins */
+  --fuente-titulos: 'Poppins', sans-serif;
+  --fuente-cuerpo: 'Poppins', sans-serif;
+
+  /* Transiciones */
+  --transicion: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secundario), var(--color-secundario-claro));
+  margin: 1.2rem auto 0;
+  border-radius: var(--radio-full);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: var(--radio-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border-color: var(--color-primario);
+}
+
+.btn--primary:hover {
+  background: var(--color-primario-claro);
+  border-color: var(--color-primario-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(26, 43, 92, 0.3);
+}
+
+.btn--whatsapp {
+  background: var(--color-secundario);
+  color: var(--color-primario);
+  border-color: var(--color-secundario);
+}
+
+.btn--whatsapp:hover {
+  background: var(--color-secundario-claro);
+  border-color: var(--color-secundario-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(201, 169, 97, 0.4);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-blanco);
+  border-color: var(--color-blanco);
+}
+
+.btn--outline:hover {
+  background: var(--color-blanco);
+  color: var(--color-primario);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-primario);
+  border-color: var(--color-borde);
+}
+
+.btn--ghost:hover {
+  background: var(--color-fondo-alt);
+  border-color: var(--color-primario);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secundario) !important;
+  transition: color var(--transicion);
+  font-weight: 500;
+}
+
+.footer__whatsapp:hover {
+  color: var(--color-secundario-claro) !important;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.text-center { text-align: center; }
+.text-suave { color: var(--color-texto-suave); }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+
+@media (max-width: 640px) {
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1rem; }
+}
+EOF
+echo "   ✅ global.css actualizado con nueva paleta Poppins"
+
+# --- 3. Actualizar la variable primaria en los CSS que la usan hardcoded ---
+echo "3️⃣ Actualizando colores hardcoded en componentes..."
+# Buscar #1B2A4E y reemplazar por #1A2B5C
+grep -rl "#1B2A4E" src/ --include="*.css" 2>/dev/null | while read file; do
+  sed -i '' 's/#1B2A4E/#1A2B5C/g' "$file"
+  echo "   $file"
+done
+echo "   ✅ Colores actualizados en CSS"
+
+echo ""
+echo "✅ Cambio 010 aplicado"
+echo ""
+echo "📋 Notas:"
+echo "   - Cinzel → Poppins (todos los títulos)"
+echo "   - Azul #1B2A4E → #1A2B5C (más vibrante)"
+echo "   - Fondo blanco (estilo Marval)"
+echo "   - Botones más redondeados (radius-full)"
+echo "   - Sombras más modernas"

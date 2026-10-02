@@ -1,60 +1,243 @@
 .header {
   position: sticky;
   top: 0;
-  background: linear-gradient(135deg, #1B2A4E 0%, #2E4A7D 100%);
+  background: var(--color-blanco);
   z-index: 100;
   padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(27, 42, 78, 0.3);
+  transition: box-shadow var(--transicion), padding var(--transicion);
+  border-bottom: 1px solid transparent;
+}
+
+.header--scrolled {
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-bottom-color: var(--color-borde);
 }
 
 .header__contenido {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
-.header__link {
-  color: var(--color-blanco);
-  transition: color 0.2s;
+/* ============================================
+   LOGO
+   ============================================ */
+.header__logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  transition: transform var(--transicion);
 }
 
-.header__link:hover {
-  color: var(--color-secundario);
+.header__logo:hover {
+  transform: scale(1.03);
 }
 
-.header__logo-texto {
+.header__logo-marca {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primario);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.header__logo-sub {
   font-family: var(--fuente-titulos);
   font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: inherit;
+  color: var(--color-secundario);
+  letter-spacing: 0.05em;
+  line-height: 1;
 }
 
-.header__whatsapp {
+/* ============================================
+   CHIPS DE NAVEGACIÓN - Desktop
+   ============================================ */
+.header__nav--desktop {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.header__chip {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  color: var(--color-texto-suave);
+  border-radius: var(--radio-full);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transicion);
+  font-family: var(--fuente-cuerpo);
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+.header__chip:hover {
+  background: var(--color-fondo-alt);
+  color: var(--color-primario);
+}
+
+.header__chip--activo {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  font-weight: 600;
+}
+
+/* ============================================
+   ACCIONES (Contacto + Hamburguesa)
+   ============================================ */
+.header__acciones {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.1rem;
-  border: 1.5px solid var(--color-secundario);
-  border-radius: var(--radio);
-  color: var(--color-secundario);
-  background: transparent;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.2s;
+  gap: 0.75rem;
 }
 
-.header__whatsapp:hover {
+.header__contacto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border-radius: var(--radio-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transicion);
+}
+
+.header__contacto:hover {
   background: var(--color-secundario);
   color: var(--color-primario);
   transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(201, 169, 97, 0.3);
+}
+
+/* ============================================
+   HAMBURGUESA (Mobile)
+   ============================================ */
+.header__hamburguesa {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: var(--radio-sm);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background var(--transicion);
+}
+
+.header__hamburguesa:hover {
+  background: var(--color-fondo-alt);
+}
+
+.header__hamburguesa span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-primario);
+  border-radius: 2px;
+  transition: all var(--transicion);
+}
+
+.header__hamburguesa--activa span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.header__hamburguesa--activa span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__hamburguesa--activa span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   MENÚ MOBILE
+   ============================================ */
+.header__menu-mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-blanco);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.header__menu-mobile--abierto {
+  max-height: 500px;
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.header__nav-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header__chip-mobile {
+  padding: 0.9rem 1.2rem;
+  background: var(--color-fondo-alt);
+  color: var(--color-primario);
+  border-radius: var(--radio);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  transition: all var(--transicion);
+  font-family: var(--fuente-cuerpo);
+}
+
+.header__chip-mobile:hover {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.header__chip-mobile--activo {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  font-weight: 600;
+}
+
+.header__contacto-mobile {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .header__nav--desktop {
+    display: none;
+  }
+
+  .header__hamburguesa {
+    display: flex;
+  }
+
+  .header__contacto {
+    display: none;
+  }
+
+  .header__menu-mobile {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
-  .header__logo-texto { font-size: 0.9rem; letter-spacing: 2px; }
-  .header__whatsapp { padding: 0.45rem 0.8rem; font-size: 0.75rem; }
-  .header__whatsapp span { display: none; }
+  .header__logo-marca { font-size: 1.3rem; }
+  .header__logo-sub { font-size: 0.95rem; }
 }
